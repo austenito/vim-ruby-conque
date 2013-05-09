@@ -56,7 +56,7 @@ function! RunSingleConque(command)
   call CloseSingleConque()
   " Keep track of the last command issued.
   let g:last_conque_command = a:command
-  let g:single_conque = conque_term#open(a:command, ['botright split', 'res 10'])
+  let g:single_conque = conque_term#open(a:command, ['botright split', 'res 20'])
 endfunction
 
 function! CloseSingleConque()
