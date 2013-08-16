@@ -23,13 +23,13 @@ function! GetRubyConqueRspecCommand()
     return g:ruby_conque_rspec_runner
   else
     if executable('rspec')
-      return 'rspec'
+      return 'zeus test'
     elseif executable('bundle exec rspec')
-      return 'bundle exec rspec'
+      return 'bundle exec zeus test'
     elseif executable('spec')
       return 'spec'
     elseif executable('bundle exec spec')
-      return 'bundle exec spec'
+      return 'bundle exec zeus test'
     endif
   endif
 endfunction
@@ -73,15 +73,15 @@ function! RunRubyCurrentFileConque()
 endfunction
 
 function! RunRspecCurrentLineConque()
-  call RunSingleConque(GetRubyConqueRspecCommand() . " " . bufname('%') . " -l "  . line('.') . " --color")
+  call RunSingleConque(GetRubyConqueRspecCommand() . " " . bufname('%') . ":" . line('.'))
 endfunction
 
 function! RunRspecCurrentFileConque()
-  call RunSingleConque(GetRubyConqueRspecCommand() . " " . bufname('%') . " --color")
+  call RunSingleConque(GetRubyConqueRspecCommand() . " " . bufname('%') . "")
 endfunction
 
 function! RunRspecAllFilesConque()
-  call RunSingleConque(g:ruby_conque_rspec_command . " " . "spec" . " --color")
+  call RunSingleConque(g:ruby_conque_rspec_command . " " . "spec" . "")
 endfunction
 
 function! RunCucumberCurrentLineConque()
